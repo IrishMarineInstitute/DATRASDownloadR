@@ -107,7 +107,7 @@ refreshDatrasData <- function(recType, survey = 'IE-IGFS', years, quarters, mode
     # Clear out the intermediate table first
     sqlQuery(channel,paste("delete from ",intermediateTableName))
     # Now save the downloaded data to the table
-    # (If I used fast=T the save fails - don't know why ...)
+    # (If I used fast=T I get errors messages about some of the NAs)
     sqlSave(channel,downloadedData,intermediateTableName,rownames=F,fast=F, append=T)
     
     numOfDBRows <- sqlQuery(channel,paste("select count(*) from ",intermediateTableName))
