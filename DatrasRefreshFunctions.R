@@ -52,14 +52,14 @@ refreshDatrasData <- function(recType, survey = 'IE-IGFS', years, quarters, mode
   
   # Choose which tables to use based on the data we are trying to update
   if (recType == 'HH'){
-    intermediateTableName <- 'dbo.HH_temp_djc'
-    finalTableName <- 'dbo.HH_Download_djc'
+    intermediateTableName <- 'dbo.HH_temp'
+    finalTableName <- 'dbo.HH_Download'
   } else if (recType == 'HL'){
-    intermediateTableName <- 'dbo.HL_temp_djc'
-    finalTableName <- 'dbo.HL_Download_djc'
+    intermediateTableName <- 'dbo.HL_temp'
+    finalTableName <- 'dbo.HL_Download'
   } else if (recType == 'CA'){
-    intermediateTableName <- 'dbo.CA_temp_djc'
-    finalTableName <- 'dbo.CA_Download_djc'
+    intermediateTableName <- 'dbo.CA_temp'
+    finalTableName <- 'dbo.CA_Download'
   } else {
     print(paste('I do not know how to handle this type of data',recType))
     stop('Unknown recType')
