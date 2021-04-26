@@ -28,8 +28,9 @@ library(RODBC)
 refreshDatrasData <- function(recType, survey = 'IE-IGFS', years, quarters, mode = 'downloadOnly', connectionString = ''){
   
   # For testing
+  #connectionString <- "Driver=SQL Server; Server=MYSERVER; Database=DATRAS"
   #recType <- 'CA'
-  #survey <- "IE-IGFS"
+  #survey <- "SCOWCGFS"
   #years <- 2020
   #quarters <- 1:4
   #mode <- 'update'
@@ -104,8 +105,8 @@ refreshDatrasData <- function(recType, survey = 'IE-IGFS', years, quarters, mode
     }
     
     # Ok, if we got this far then the next step is to try and save the data to the database
-    # Clear out the intermediate table first
-    sqlQuery(channel,paste("delete from ",intermediateTableName))
+    # Clear out the intermediate table first (added nocount to prevent errors for an empty table)
+    sqlQuery(channel,paste("set nocount on; delete from",intermediateTableName,";"))
     # Now save the downloaded data to the table
     # (If I used fast=T I get errors messages about some of the NAs)
     sqlSave(channel,downloadedData,intermediateTableName,rownames=F,fast=F, append=T)
