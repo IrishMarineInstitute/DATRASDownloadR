@@ -1,8 +1,15 @@
+# IMPORTANT - there is an issue in the icesDATRAS package below v1.3-1 with the AreaCode field in the downloaded CA data - statistical rectangles in the format nnEn can get converted into numbers.  Ensure you are using at least v1.3-1 of icesDATRAS which has this problem fixed.
+# If the version on CRAN is too old you can download the latest developmet 
+# version of icesDATRAS using the following:
+#install(devtools)
+#library(devtools)
+#install_github("ices-tools-prod/icesDatras")
+
 library(icesDatras)
+print('IMPORTANT - there is an issue in the icesDATRAS package below v1.3-1 with the AreaCode field in the downloaded CA data - statistical rectangles in the format nnEn can get converted into numbers.  Ensure you are using at least v1.3-1 of icesDATRAS which has this problem fixed. ')
+print(paste('The loaded version of the icesDATRAS package is',getNamespaceVersion('icesDatras'),''))
+
 library(RODBC)
-
-
-
 
 #' refreshDatrasData
 #' 
